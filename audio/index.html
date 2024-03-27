@@ -6,10 +6,68 @@
     <title>Audio</title>
 </head>
 <body>
-  <audio controls autoplay>
-    <source
-      src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.webm"
-      type="audio/webm" />
-  </audio>
+  <ul>
+    <li>
+      WebM with file type:
+      <audio controls>
+        <source
+          src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.webm"
+          type="audio/webm" />
+      </audio>
+    </li>
+    <li>
+      WebM no file type:
+      <audio controls>
+        <source
+          src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.webm"
+          />
+      </audio>
+    </li>
+    <li>
+      WebM direct on audio
+      <audio controls src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.webm"
+          />
+    </li>
+    <li>
+      WebM with wrong file type:
+      <audio controls>
+        <source
+          src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.webm"
+          type="audio/wav"
+          />
+      </audio>
+    </li>
+    <li>
+      Wav with file type
+      <audio controls>
+        <source
+          src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.wav"
+          type="audio/wav"
+          />
+      </audio>
+    </li>
+    <li>
+      Wav no file type
+      <audio controls>
+        <source
+          src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.wav"
+          />
+      </audio>
+    </li>
+    <li>
+      Wav direct on audio
+      <audio controls src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.wav"
+          />
+    </li>
+    <li>
+      Wav with wrong file type:
+      <audio controls>
+        <source
+          src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.wav"
+          type="audio/webm"
+          />
+      </audio>
+    </li>
+  </ul>
 </body>
 </html>
