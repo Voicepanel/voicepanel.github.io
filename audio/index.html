@@ -8,7 +8,7 @@
 <body>
   <ul>
     <li>
-      WebM with file type:
+      audio.webm with audio/webm file type:
       <audio controls>
         <source
           src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.webm"
@@ -16,7 +16,7 @@
       </audio>
     </li>
     <li>
-      WebM no file type:
+      audio.webm no file type:
       <audio controls>
         <source
           src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.webm"
@@ -24,12 +24,12 @@
       </audio>
     </li>
     <li>
-      WebM direct on audio
+      audio.webm direct on audio (no source tag)
       <audio controls src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.webm"
           />
     </li>
     <li>
-      WebM with wrong file type:
+      audio.webm with audio/wav (wrong file type)
       <audio controls>
         <source
           src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.webm"
@@ -38,7 +38,7 @@
       </audio>
     </li>
     <li>
-      Wav with file type
+      audio.wav with audio/wav type
       <audio controls>
         <source
           src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.wav"
@@ -47,7 +47,7 @@
       </audio>
     </li>
     <li>
-      Wav no file type
+      audio.wav no file type
       <audio controls>
         <source
           src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.wav"
@@ -55,16 +55,34 @@
       </audio>
     </li>
     <li>
-      Wav direct on audio
+      audio.wav direct on audio (no source tag)
       <audio controls src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.wav"
           />
     </li>
     <li>
-      Wav with wrong file type:
+      audio.wav with audio/webm (wrong file type)
       <audio controls>
         <source
           src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/audio.wav"
           type="audio/webm"
+          />
+      </audio>
+    </li>
+    <li>
+      awm (no file extension) with audio/webm
+      <audio controls>
+        <source
+          src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/awm"
+          type="audio/webm"
+          />
+      </audio>
+    </li>
+    <li>
+      awv (no file extension) with audio/wav
+      <audio controls>
+        <source
+          src="https://shkpjhiyhjfgzkonngsb.supabase.co/storage/v1/object/public/response-media/3d59da5f-b1c6-475d-bfb0-9c4f04afe1a6/audio/1/awv"
+          type="audio/wav"
           />
       </audio>
     </li>
