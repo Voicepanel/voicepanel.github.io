@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamma</title>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body, html {
+          height: 100%;
+        }
+
+        .full-width-image {
+          width: 100%;
+          height: auto;
+        }
+
+        #iframe-container {
+          position: fixed;
+          bottom: 10px;
+          right: 10px;
+          width: 300px;
+          height: 200px;
+          border: none;
+          display: none;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+  </head>
+  <body>
+
+    <img src="./gamma.png" alt="Full width image" class="full-width-image">
+
+    <iframe id="iframe-container" src="https://app.voicepanel.co/d/NlYIzyaPDIdX1d"></iframe>
+
+    <script>
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "l" || event.key === "L") {
+          var iframe = document.getElementById("iframe-container");
+          iframe.style.display = "block";
+        }
+      });
+    </script>
+
+  </body>
+</html>
