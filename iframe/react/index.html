@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Full Screen Image</title>
+    <style>
+body, html {
+  margin: 0;
+  height: 100%;
+}
+    #root {
+      height: 100%;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    </style>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+    function App() {
+      const [isVisible, setIsVisible] = React.useState(false);
+
+      const handleKeyPress = (event) => {
+        if (event.key === 'L' || event.key === 'l') {
+          setIsVisible(!isVisible);
+        }
+      };
+
+      const handleSurveyCompletion = (event) => {
+        if (event.data.surveyCompleted) {
+          setIsVisible(false);
+        }
+      };
+
+      React.useEffect(() => {
+        window.addEventListener('message', handleSurveyCompletion);
+        return () => {
+          window.removeEventListener('message', handleSurveyCompletion);
+        };
+      }, []);
+
+      React.useEffect(() => {
+        window.addEventListener('keydown', handleKeyPress);
+        return () => {
+          window.removeEventListener('keydown', handleKeyPress);
+        };
+      }, [isVisible]);
+
+      return (
+        <div width="100%" height="100%">
+          <FullScreenImage />
+          <Voicepanel isVisible={isVisible} language={"en"} customerId={"example"} />
+        </div>
+      );
+    }
+
+    function Voicepanel({ isVisible, language, customerId }) {
+
+      return (
+        <div
+          style={{
+            position: "absolute",
+            bottom: "0",
+            right: "0",
+            margin: "10px",
+            zIndex: 999, // ensure it stays above the image
+          }}
+        >
+          {isVisible ? (
+            <iframe
+              id="iframe-container"
+              src="https://app.voicepanel.co/d/NlYIzyaPDIdX1d"
+              width="400" // specify the size of the iframe
+              height="300" // specify the size of the iframe
+              style={{ border: "none" }} // optional: to remove borders
+            ></iframe>
+          ) : null}
+        </div>
+      );
+    }
+
+    function FullScreenImage() {
+      return (
+        <img
+          src="../gamma.png"
+          alt="Full screen image"
+        />
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
