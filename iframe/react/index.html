@@ -30,8 +30,8 @@ body, html {
 
     function App() {
       const [isSurveyVisible, setIsSurveyVisible] = React.useState(false);
-      const customerId = localStorage.getItem("voicepanelCid") || "example123";
-      const surveyLink = localStorage.getItem("voicepanelUrl") || "https://app.voicepanel.co/d/NlYIzyaPDIdX1d";
+      const customerId = localStorage.getItem("voicepanel-cid") || "example123";
+      const surveyLink = localStorage.getItem("voicepanel-link") || "https://app.voicepanel.co/d/NlYIzyaPDIdX1d";
 
       const handleSurveyLaunch = (event) => {
         if (event.key === 'L' || event.key === 'l') {
