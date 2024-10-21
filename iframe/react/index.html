@@ -28,17 +28,12 @@ body, html {
 
     <script type="text/babel">
 
-    function App() {
+    function Example() {
       const [isSurveyVisible, setIsSurveyVisible] = React.useState(false);
       const customerId = localStorage.getItem("voicepanel-cid") || "example123";
-      const surveyLink = localStorage.getItem("voicepanel-link") || "https://app.voicepanel.co/d/NlYIzyaPDIdX1d";
+      const surveyLink = localStorage.getItem("voicepanel-link") || "https://app.voicepanel.co/d/Eoj2zUCP8oss8o";
 
-      const handleSurveyLaunch = (event) => {
-        if (event.key === 'L' || event.key === 'l') {
-          setIsSurveyVisible(true);
-        }
-      };
-
+      /** Start: Code to handle closing the Voicepanel survey **/
       const handleSurveyClose = (event) => {
         if (event.data.closeVoicepanel) {
           setIsSurveyVisible(false);
@@ -46,52 +41,69 @@ body, html {
       }
 
       React.useEffect(() => {
+        window.addEventListener("message", handleSurveyClose);
+        return () => {
+          window.removeEventListener('message', handleSurveyClose);
+        }
+      }, []);
+      /** End: Code to handle closing the Voicepanel survey **/
+
+      /** Start: Example code to launch the Voicepanel survey **/
+      const handleSurveyLaunch = (event) => {
+        if (event.key === 'L' || event.key === 'l') {
+          setIsSurveyVisible(true);
+        }
+      };
+
+      React.useEffect(() => {
         window.addEventListener('keydown', handleSurveyLaunch);
         return () => {
           window.removeEventListener('keydown', handleSurveyLaunch);
         };
       }, []);
-
-      React.useEffect(() => {
-        window.addEventListener("message", handleSurveyClose);
-        return () => {
-          window.removeEventListener('message', randleSurveyClose);
-        }
-      }, []);
+      /** End: Example code to launch the Voicepanel survey **/
 
       return (
         <div width="100%" height="100%">
-          <FullScreenImage />
-          <Voicepanel isVisible={isVisible} surveyLink={surveyLink} customerId={customerId} />
+          <App />
+          <VoicepanelSurvey isVisible={isSurveyVisible} surveyLink={surveyLink} customerId={customerId} />
         </div>
       );
     }
 
-    function Voicepanel({ isVisible, surveyLink, customerId }) {
+    function VoicepanelSurvey({ isVisible, surveyLink, customerId }) {
+
+      const params = new URLSearchParams({
+        cid: customerId,
+      });
+
+      const src = `${surveyLink}?cid=${params.toString()}`;
+
       return (
-        <div
-          style={{
-            position: "absolute",
-            bottom: "15px",
-            right: "15px",
-            zIndex: 999,
-          }}
-        >
-          {isVisible ? (
+        <>
+          {isVisible && (
             <iframe
               id={`voicepanel-${surveyLink}`}
               allow="microphone https://app.voicepanel.co/"
-              src={surveyLink}
-              width="400"
-              height="300"
-              style={{ border: "none", borderRadius: "15px" }}
+              src={src}
+              style={{
+                border: "0.5px solid gray",
+                borderRadius: "15px",
+                position: "fixed",
+                bottom: "15px",
+                right: "15px",
+                width: "300px",
+                height: "200px",
+                backgroundColor: "white",
+                zIndex: "9999"
+              }}
             ></iframe>
-          ) : null}
-        </div>
+          )}
+        </>
       );
     }
 
-    function FullScreenImage() {
+    function App() {
       return (
         <img
           src="../gamma.png"
@@ -100,7 +112,7 @@ body, html {
       );
     }
 
-    ReactDOM.render(<App />, document.getElementById('root'));
+    ReactDOM.render(<Example/>, document.getElementById('root'));
     </script>
   </body>
 </html>
