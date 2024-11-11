@@ -32,23 +32,15 @@
         }
     </style>
   </head>
+  <script src="https://cdn.voicepanel.com/s/eM4lNuMhxuudVT7i7E.js"></script>
   <body>
 
     <img src="./gamma.png" alt="Full width image" class="full-width-image">
 
-    <iframe
-      id="iframe-container"
-      allow="microphone https://app.voicepanel.co/"
-      src="https://app.voicepanel.co/d/NlYIzyaPDIdX1d">
-    </iframe>
 
     <script>
-      document.addEventListener("keydown", function(event) {
-        if (event.key === "l" || event.key === "L") {
-          var iframe = document.getElementById("iframe-container");
-          iframe.style.display = "block";
-        }
-      });
+      const voicepanel = Voicepanel.init();
+      voicepanel.showSurvey("csat_survey");
     </script>
 
   </body>
