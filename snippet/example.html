@@ -11,6 +11,9 @@
     <button id="show">Show Survey</button>
     <button id="hide">Hide Survey</button>
     <button id="clear">Clear Storage</button>
+    <button id="config">Debug</button>
+    <pre id="storage-display"></pre>
+    <pre id="config-display"></pre>
     <script>
       document.getElementById("clear").onclick = function() {
         for (let i = 0; i < localStorage.length; i++) {
@@ -33,6 +36,33 @@
         const voicepanel = Voicepanel.init();
         voicepanel.hideSurvey("csat_survey");
       };
+    </script>
+    <script>
+      document.getElementById("config").onclick = function() {
+        var configJson = JSON.stringify(window.voicepanelConfig || {}, null, 2);
+
+        document.getElementById("config-display").innerHTML = `config: ${configJson}`;
+
+        var storageOutput = '';
+        for (var i = 0; i < localStorage.length; i++) {
+          var key = localStorage.key(i);
+
+          if (key.startsWith('_vp')) {
+            var rawValue = localStorage.getItem(key);
+            var value;
+
+            try {
+              var jsonValue = JSON.parse(rawValue);
+              value = JSON.stringify(jsonValue, null, 2);
+            } catch (e) {
+              value = rawValue;
+            }
+          storageOutput += key + ': ' + value + '\n';
+          }
+        }
+
+        document.getElementById("storage-display").innerHTML = storageOutput;
+      }
     </script>
   </body>
 </html>
