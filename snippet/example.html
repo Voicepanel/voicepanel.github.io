@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Example</title>
+    <script src="./console-override.js"></script>
+    <script src="https://cdn.voicepanel.com/s/eM4lNuMhxuudVT7i7E.js"></script>
   </head>
-  <script src="https://cdn.voicepanel.com/s/eM4lNuMhxuudVT7i7E.js"></script>
   <body>
     <p>Hello world!</p>
     <button id="show">Show Survey</button>
     <button id="hide">Hide Survey</button>
     <button id="clear">Clear Storage</button>
+    <button id="reload">Reload</button>
     <pre id="storage-display"></pre>
     <pre id="config-display"></pre>
     <script>
@@ -22,6 +24,7 @@
             i--; // Adjust index after removing item
           }
         }
+        window.location.reload();
       };
     </script>
     <script>
@@ -34,6 +37,11 @@
       document.getElementById("hide").onclick = function() {
         const voicepanel = Voicepanel.init();
         voicepanel.hideSurvey("csat_survey");
+      };
+    </script>
+    <script>
+      document.getElementById("reload").onclick = function() {
+        window.location.reload();
       };
     </script>
     <script>
