@@ -7,11 +7,32 @@
   </head>
   <script src="https://cdn.voicepanel.com/s/eM4lNuMhxuudVT7i7E.js"></script>
   <body>
-    <h1>Hello world!</h1>
+    <p>Hello world!</p>
+    <button id="show">Show Survey</button>
+    <button id="hide">Hide Survey</button>
+    <button id="clear">Clear Storage</button>
     <script>
-      const voicepanel = Voicepanel.init();
-      voicepanel.showSurvey("csat_survey");
+      document.getElementById("clear").onclick = function() {
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && key.startsWith('_vp')) {
+            localStorage.removeItem(key);
+            i--; // Adjust index after removing item
+          }
+        }
+      };
     </script>
-
+    <script>
+      document.getElementById("show").onclick = function() {
+        const voicepanel = Voicepanel.init();
+        voicepanel.showSurvey("csat_survey");
+      };
+    </script>
+    <script>
+      document.getElementById("hide").onclick = function() {
+        const voicepanel = Voicepanel.init();
+        voicepanel.hideSurvey("csat_survey");
+      };
+    </script>
   </body>
 </html>
