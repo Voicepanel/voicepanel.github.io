@@ -25,7 +25,7 @@ const consoleOverride = (level) => {
       logContainer.id = "logContainer";
       logContainer.style.position = "sticky";
       logContainer.style.bottom = "10px";
-      logContainer.style.width = "50%";
+      logContainer.style.width = "70vw";
       logContainer.style.border = "1px solid #ccc";
       logContainer.style.padding = "10px";
       logContainer.style.borderRadius = "10px";
