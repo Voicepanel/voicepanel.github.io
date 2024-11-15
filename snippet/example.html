@@ -47,7 +47,7 @@
     </script>
     <script>
       const defaults = {
-        [LOCAL_STORAGE_SNIPPET_KEY_KEY]: 'testsdkkey1',
+        [LOCAL_STORAGE_SNIPPET_KEY_KEY]: 'D4FvvoH9aa35KI',
         [LOCAL_STORAGE_SNIPPET_ENV_KEY]: 'dev'
       };
 
@@ -128,20 +128,26 @@
         showConfigData(window.voicepanelConfig);
       }
     </script>
-    <script id="snippet">
+    <script id="snippet-insert-point">
+      const baseUrl = `https://cdn.voicepanel.com`
       const sdkKey = localStorage.getItem(LOCAL_STORAGE_SNIPPET_KEY_KEY);
       const env = localStorage.getItem(LOCAL_STORAGE_SNIPPET_ENV_KEY) === "dev" ? "/s/dev/" : "/s/";
 
+      const snippetUrl = `${baseUrl}${env}${sdkKey}.js`;
+
       if (sdkKey) {
         const script = document.createElement('script');
-        script.src = `https://cdn.voicepanel.com${env}${sdkKey}.js`;
+        script.src = snippetUrl;
         script.onload = function() {
           init();
         };
 
-        const currentScript = document.getElementById("snippet");
+        const currentScript = document.getElementById("snippet-insert-point");
         currentScript.parentNode.insertBefore(script, currentScript.nextSibling);
       }
+
+      const snippetUrlEl = document.getElementById("current-snippet");
+      snippetUrlEl.innerHTML = snippetUrl;
     </script>
   </body>
 </html>
