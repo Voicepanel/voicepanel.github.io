@@ -7,44 +7,49 @@
     <script src="./console-override.js"></script>
   </head>
   <body>
-    <script>
-      function setEnvironment() {
-        const envSelect = document.getElementById('env');
-        const selectedEnv = envSelect.value;
-        localStorage.setItem('_vp_snippet_env', selectedEnv);
-        console.log(`Environment set to: ${selectedEnv}`);
-        showConfigData();
-      }
-
-      function setSdkKey() {
-        const sdkKeyInput = document.getElementById('sdkKeyInput');
-        const sdkKey = sdkKeyInput.value;
-        localStorage.setItem('_vp_snippet_sdk_key', sdkKey);
-        console.log(`SDK Key set to: ${sdkKey}`);
-        showConfigData();
-      }
-    </script>
-    <div style="margin-bottom: 10px;">
+    <div>
+      <input type="text" id="surveyKey" placeholder="Survey Key">
       <button id="show">Show Survey</button>
       <button id="hide">Hide Survey</button>
-      <button id="clear">Clear Storage</button>
-      <button id="reload">Reload</button>
     </div>
-    <div>
+    <div style="margin-top: 10px;">
       <select id="env" style="min-width: 80px; min-height: 22px;" onchange="setEnvironment()">
         <option value="dev">/s/dev/</option>
         <option value="prod">/s/</option>
       </select>
       <input type="text" id="sdkKeyInput" placeholder="Enter SDK Key">
-      <button onclick="setSdkKey()">Save</button>
+      <button onclick="setSdkKey()">Change Snippet</button>
+    </div>
+    <div style="margin-top: 10px;">
+      <button id="clear">Clear Storage</button>
+      <button id="reload">Reload</button>
     </div>
     <pre id="current-snippet"></pre>
     <pre id="storage-display"></pre>
     <pre id="config-display"></pre>
     <script>
+      const LOCAL_STORAGE_SNIPPET_ENV_KEY = 'snippet_env_path';
+      const LOCAL_STORAGE_SNIPPET_KEY_KEY = 'snippet_key';
+    </script>
+    <script>
+      function setEnvironment() {
+        const envSelect = document.getElementById('env');
+        const selectedEnv = envSelect.value;
+        localStorage.setItem(LOCAL_STORAGE_SNIPPET_ENV_KEY, selectedEnv);
+        window.location.reload();
+      }
+
+      function setSdkKey() {
+        const sdkKeyInput = document.getElementById('sdkKeyInput');
+        const sdkKey = sdkKeyInput.value;
+        localStorage.setItem(LOCAL_STORAGE_SNIPPET_KEY_KEY, sdkKey);
+        window.location.reload();
+      }
+    </script>
+    <script>
       const defaults = {
-        _vp_snippet_sdk_key: 'testsdkkey1',
-        _vp_snippet_env: 'dev'
+        [LOCAL_STORAGE_SNIPPET_KEY_KEY]: 'testsdkkey1',
+        [LOCAL_STORAGE_SNIPPET_ENV_KEY]: 'dev'
       };
 
       Object.keys(defaults).forEach((key) => {
@@ -56,23 +61,11 @@
     <script>
       (function initializeEnvironment() {
         const envSelect = document.getElementById('env');
-        const storedEnv = localStorage.getItem('_vp_snippet_env');
+        const storedEnv = localStorage.getItem(LOCAL_STORAGE_SNIPPET_ENV_KEY);
         if (storedEnv) {
           envSelect.value = storedEnv;
         }
       })();
-    </script>
-    <script>
-      const sdkKey = localStorage.getItem('_vp_snippet_sdk_key');
-      const env = localStorage.getItem('_vp_snippet_env') === 'dev" ? "/s/dev/" : "/s/";
-
-      if (sdkKey && baseUrl) {
-        const script = document.createElement('script');
-        script.src = `${baseUrl}${env}${sdkKey}.js`;
-
-        const currentScript = document.currentScript;
-        currentScript.parentNode.insertBefore(script, currentScript.nextSibling);
-      }
     </script>
     <script>
       document.getElementById("clear").onclick = function() {
@@ -88,8 +81,9 @@
     </script>
     <script>
       document.getElementById("show").onclick = function() {
+        const surveyKey = document.getElementById("surveyKey").value;
         const voicepanel = Voicepanel.init();
-        voicepanel.showSurvey("csat_survey");
+        voicepanel.showSurvey(surveyKey);
       };
     </script>
     <script>
@@ -104,8 +98,8 @@
       };
     </script>
     <script>
-      function showConfigData() {
-        var configJson = JSON.stringify(window.voicepanelConfig || {}, null, 2);
+      function showConfigData(config) {
+        var configJson = JSON.stringify(config || {}, null, 2);
 
         document.getElementById("config-display").innerHTML = `config: ${configJson}`;
 
@@ -129,7 +123,25 @@
 
         document.getElementById("storage-display").innerHTML = storageOutput;
       }
-      showConfigData();
+
+      function init() {
+        showConfigData(window.voicepanelConfig);
+      }
+    </script>
+    <script id="snippet">
+      const sdkKey = localStorage.getItem(LOCAL_STORAGE_SNIPPET_KEY_KEY);
+      const env = localStorage.getItem(LOCAL_STORAGE_SNIPPET_ENV_KEY) === "dev" ? "/s/dev/" : "/s/";
+
+      if (sdkKey) {
+        const script = document.createElement('script');
+        script.src = `https://cdn.voicepanel.com${env}${sdkKey}.js`;
+        script.onload = function() {
+          init();
+        };
+
+        const currentScript = document.getElementById("snippet");
+        currentScript.parentNode.insertBefore(script, currentScript.nextSibling);
+      }
     </script>
   </body>
 </html>
