@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Example</title>
-    <script src="./console-override.js"></script>
   </head>
   <body>
     <div>
@@ -88,8 +87,9 @@
     </script>
     <script>
       document.getElementById("hide").onclick = function() {
+        const surveyKey = document.getElementById("surveyKey").value;
         const voicepanel = Voicepanel.init();
-        voicepanel.hideSurvey("csat_survey");
+        voicepanel.hideSurvey(surveyKey);
       };
     </script>
     <script>
