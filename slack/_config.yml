@@ -1,4 +1,4 @@
 title: Voicepanel - Slack Integration
 description: Frequently asked questions about Voicepanel's slack integration
 markdown: kramdown
-theme: null
+theme: jekyll-theme-minimal
