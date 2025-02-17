@@ -1,0 +1,4 @@
+/* Hide the Jekyll theme's header */
+.site-header {
+    display: none;
+}
