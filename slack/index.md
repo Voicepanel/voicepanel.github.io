@@ -1,7 +1,7 @@
-<div class="flex items-center justify-center w-full gap-8 py-8">
-  <img src="https://voicepanel-public-assets.s3.us-west-2.amazonaws.com/logos/voicepanel-logo.png" alt="Voicepanel" class="h-16 w-auto"/>
+<div class="flex items-center justify-center w-full gap-6 py-4">
+  <img src="https://s3/voicepanel-logo.png" alt="Voicepanel Logo" class="w-24 h-24 object-contain"/>
   <span class="text-4xl font-bold text-gray-400">+</span>
-  <img src="https://voicepanel-public-assets.s3.us-west-2.amazonaws.com/logos/slack-logo.png" alt="Slack" class="h-16 w-auto"/>
+  <img src="https://s3/slack-logo.png" alt="Slack Logo" class="w-24 h-24 object-contain"/>
 </div>
 
 ## Installation
