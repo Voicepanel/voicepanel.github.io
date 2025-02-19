@@ -1,4 +1,8 @@
-# Voicepanel Slack Integration
+<div class="flex items-center justify-center w-full gap-8 py-8">
+  <img src="https://voicepanel-public-assets.s3.us-west-2.amazonaws.com/logos/voicepanel-logo.png" alt="Voicepanel" class="h-16 w-auto"/>
+  <span class="text-4xl font-bold text-gray-400">+</span>
+  <img src="https://voicepanel-public-assets.s3.us-west-2.amazonaws.com/logos/slack-logo.png" alt="Slack" class="h-16 w-auto"/>
+</div>
 
 ## Installation
 Sign into your [Voicepanel account](voicepanel.com) and find "Integrations" in the left side bar. Click "Connect" and go
