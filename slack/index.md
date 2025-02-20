@@ -5,7 +5,7 @@
 </div>
 
 ## Installation
-Sign into your [Voicepanel account](voicepanel.com) and find "Integrations" in the left side bar. Click "Connect" and go
+Sign into your [Voicepanel account](https://voicepanel.com/) and find "Integrations" in the left side bar. Click "Connect" and go
 through the flow to connect Voicepanel to your Slack workspace.
 
 ## Benefits
