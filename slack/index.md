@@ -5,12 +5,12 @@
 </div>
 
 ## About
-This site is all about the Voicepanel Slack integration. Voicepanel allows businesses to get a stream of rich feedback
-from their customers and Slack is a great way for teams to collaborate quickly and effectively. The integration brings
+This site is all about the Voicepanel Slack integration. [Voicepanel](https://voicepanel.com/) allows businesses to get a stream of rich feedback
+from their customers and [Slack](https://slack.com/) is a great way for teams to collaborate quickly and effectively. The integration brings
 the best of both worlds.
 
 ## Benefits
-The key benefit of the Voicepanel Slack integration is to get notified as soon as you receive customer feedback on your product collected by Voicepanel so you can get team-level visibility and collaboration in a comfortable and familiar Slack workflow.
+As alluded to above, the key benefit of the Voicepanel Slack integration is to get notified in the Slack channel of your choice as soon as you receive customer feedback on your product collected by Voicepanel so you can get team-level visibility and collaboration in a comfortable and familiar Slack workflow.
 
 ## Installation
 1. Sign into your existing or create a new free [Voicepanel](https://voicepanel.com/) account.
